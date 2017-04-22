@@ -1,0 +1,28 @@
+
+
+
+<div class="container">
+  <section id="contact" class="contact-area ptb-100">
+            <div class="container">
+				<div class="section-title text-center mb-70">
+					<h2>Author Login</h2>
+					<p>ブログ筆者ログイン画面</p>
+				</div>				
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="conract-area-bottom">
+                            <form id="contact-form">
+                                <span class="error" *ngIf="error">{{ error }}</span>
+                                <div class="row">
+                                     <!--<button (click)="loginFb()" id="fb">Login With Facebook</button><br>
+  　　　　　　　　　　　　　　　　　　　<button (click)="loginGoogle()" id="google">Login With Google</button>-->
+                                     <button routerLink="/email" id="mail">Email</button>
+  　　　　　　　　　　　　　　　　　</div>
+                            </form>
+                        <!--<a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>	
+  </div>

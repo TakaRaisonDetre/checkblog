@@ -1,0 +1,101 @@
+
+<!--
+<!--<h3>{{name.auth.displayname}} さん</h3>-->
+<!--blog-area start -->
+		<!--<div id="blog" class="blog-area gray-bg ptb-90">
+            
+            <div class="container">
+		    	<div class="section-title text-center mb-70">
+					<h3 style="font-family: '游明朝', YuMincho, 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'HG明朝E', 'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;">
+            「枠」を超えると見える景色がある。</h3>
+
+          <h2>Latest News</h2>
+					<p>東京オリンピックに出場するまでの間、皆さんにこのブログで近況をお届けいたします。</p>
+				</div>					
+                <div class="row">-->
+                    <!--<div class="col-md-4 col-sm-6" *ngFor ="let item of listings">
+                        <div class="blog-part white-bg hm-blog">
+                            <div class="blog-img">
+                                   
+                                  <a href="#"> <iframe *ngIf="item.videourl" 
+								 width="100%" height="300px" border="0" allowfullscreen
+								 [src]="item?.videourl|safeUrl"></iframe></a>
+							
+                                <a href="#"><img *ngIf="!item.videourl" class="thumbnail" src="{{imageUrl}}" alt=""></a>-->
+                                 <!--<a href="#"><img *ngIf="!item.videourl" class="thumbnail" src="../assets/img/blog/5.jpg" alt=""></a>-->
+
+
+						<!--	</div>
+                            <div class="blog-info blog-pad">
+                                <div class="blog-meta">
+                                    <span>
+                                        <i class="fa fa-user"></i>
+                                        {{item.writtenby}}
+                                    </span>
+                                    <span>
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        {{item.createdat}}
+                                    </span>
+                                </div>
+                                <h3><a [routerLink]="['/individual-blog/' + item.$key]">{{item.title}}</a></h3>
+                                <p>{{item.shortbody}}</p>
+                                <a [routerLink]="['/individual-blog/' + item.$key]">READ MORE</a>
+                            </div>
+                        </div>
+                       </div>
+                    </div>-->
+                <!--</div>
+            </div>
+       -->
+		<!-- blog-area end -->	
+
+
+
+<!-- about-us-area start -->
+        <section id="about" class="about-us-area ptb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+						<div>
+							<h2>Blog Archive</h2>
+							<p>過去のブログをすべて閲覧できます。</p>
+                            <hr>
+							<!--<ul class="mb-40">
+								<li *ngFor="let item of listings | paginate: {itemsPerPage: 5, currentPage:page, id: '1'}; let i = index">
+                                  <a [routerLink]="['/individual-blog/' + item.$key]"> {{item.title}} </a>
+                                   
+                                     <i class="fa fa-user"></i> {{item.writtenby}}  
+                                        <i class="fa fa-calendar" aria-hidden="true"></i> {{item.category}}
+                                       <a>{{i+1}}</a>
+                                   <hr>
+                               </li>
+							</ul>-->
+
+                 <table class="table">
+                    <tr>
+                        <th>BlogID</th>
+                        <th>Title クリックで詳細</th>
+                        <th>Author</th> 
+                        <th>Category</th>
+                    </tr>
+                    <tr *ngFor="let item of listings | paginate: {itemsPerPage: 2, currentPage:page, id: '1'}; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td><a [routerLink]="['/individual-blog/' + item.$key]"> {{item.title}} </a></td>
+                        <td>{{item.writtenby}}</td>
+                        <td>{{item.category}}</td>
+                    </tr>
+                </table>
+
+                 <pagination-controls (pageChange)="page = $event" id="1"
+                      maxSize="2"
+                      directionLinks="true"
+                      autoHide="true">
+                </pagination-controls>`
+							<!--<a href="#">Learn More</a>-->
+						</div>
+                    </div>
+					
+                </div>
+            </div>
+        </section>
+		<!-- about-us-area end -->

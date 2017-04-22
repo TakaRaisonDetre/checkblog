@@ -1,0 +1,38 @@
+<div *ngIf="listing">
+		<!-- about-us-area start -->
+        <section id="about" class="about-us-area ptb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+						<div class="about-minimal">
+							<h2 style="font-family: '游明朝', YuMincho, 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'HG明朝E', 'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;">
+           {{listing.title}}</h2><br><h4> by {{listing.writtenby}}</h4>
+							<p>{{listing.shortbody}}</p>
+            
+               <span *ngIf="listing.category"><i class="fa fa-user"></i> {{listing.category}}</span>
+               <span><i class="fa fa-tasks"></i> {{listing.publishedstatus}}</span>
+               
+              <hr> 
+              <p>{{listing.longbodyone}}</p>
+              <p>{{listing.longbodytwo}}</p>
+              <p>{{listing.longbodythree}}</p>
+              
+              <hr>
+							<a [routerLink]="['/bloglists']">Go Back</a>
+						</div>
+                    </div>
+					<div class="col-md-6">
+						<div class="minimal-img" *ngIf="listing.imgurl">
+						<img style="width:100%" src="{{imageUrl}}" alt="" >
+                            <!--<img *ngIf="listing.imgurl" [src] = "imageUrl" alt="">-->
+                        </div>
+                         <a> <iframe *ngIf="listing.videourl" 
+								 width="100%" height="300px" border="0" allowfullscreen
+								 [src]="listing?.videourl|safeUrl"></iframe></a>
+						
+					</div>
+                </div>
+            </div>
+        </section>
+		<!-- about-us-area end -->
+</div>

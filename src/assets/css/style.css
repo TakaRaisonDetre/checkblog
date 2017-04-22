@@ -1,0 +1,351 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: Your template name 
+    Template URI: http://bootexperts.com
+    Description: This is html5 template
+    Author: BootExperts
+    Author URI: http://bootexperts.com
+    Version: 1.0
+
+-----------------------------------------------------------------------------------
+    
+    CSS INDEX
+    ===================
+	
+    1. Theme Default CSS (body, link color, section etc)
+
+-----------------------------------------------------------------------------------*/
+
+/*----------------------------------------*/
+/*  1.  Theme default CSS
+/*----------------------------------------*/
+
+.bg-img {
+  background: rgba(0, 0, 0, 0) url("./assets/img/bg-2.jpg") repeat scroll center center / cover ;
+  height: 100vh;
+}
+.slider > img {
+  width: 100%;
+}
+
+
+/*----- about us  ------*/
+.single-count {
+  text-align: center;
+}
+
+.count-icon {
+
+}
+.count-icon span{font-size: 35px;}
+.count-title {
+
+}
+.count-title h2 {
+  color: #464646;
+  font-size: 40px;
+  font-weight: 300;
+  margin: 15px 0;
+}
+.count-title span{font-size: 16px;
+letter-spacing: 1px;
+margin: 0;
+text-transform: capitalize;}
+.{}
+.{}
+.{}
+.hover-style {
+  display: block;
+  position: relative;
+}
+.hover-style::before {
+  background: #fff none repeat scroll 0 0;
+  content: "";
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.3s ease-in-out 0s;
+  width: 100%;
+}
+.hover-style:hover::before {
+  opacity: 0.95;
+}
+
+
+/* about */
+.about-minimal{}
+.about-minimal h2{}
+.minimal-img > img {
+  width: 100%;
+}
+.about-minimal{}
+.about-minimal ul{}
+.about-minimal ul li {
+  border-top: 1px solid #f6f6f6;
+  display: block;
+  line-height: 1.3em;
+  list-style-type: none;
+  margin: 0;
+  padding: 15px 0;
+  position: relative;
+}
+.about-minimal ul li:last-child {
+  border-bottom: 1px solid #eceaeb;
+}
+.about-minimal ul li::before {
+  color: #444;
+  content: "";
+  font-family: FontAwesome;
+  font-size: 13px;
+  line-height: 12px;
+  margin-left: 0;
+  margin-right: 10px;
+  position: relative;
+  top: 1px;
+}
+.about-minimal a {
+  border: 1px solid #ddd;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  margin-bottom: 5px;
+  padding: 12px 25px;
+  text-transform: uppercase;
+}
+.about-minimal a:hover{background:#464646;color:#fff;border-color:#464646}
+.single-skill-about {
+  text-align: center;
+}
+.progress-h4 {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+
+
+
+
+
+.about-us-text > p {
+  color: #666;
+}
+.team-wrapper {
+  border: 1px solid #e7e7e7;
+}
+.team-member {
+  position: relative;
+}
+.team-member > img {
+  filter: grayscale(100%);
+  width: 100%;
+}
+.team-member::before {
+  background: transparent none repeat scroll 0 0;
+  content: " ";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
+  width: 100%;
+  z-index: 1;
+}
+.team-wrapper:hover .team-member::before  {
+  background: rgba(33, 40, 45, 0.55);
+}
+.team-info {
+  padding: 15px 0;
+}
+.team-icon {
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99;
+}
+.team-icon > a {
+  border: 1px solid transparent;
+  color: #fff;
+  display: inline-block;
+  font-size: 18px;
+  height: 40px;
+  line-height: 36px;
+  margin: 0 15px;
+  opacity: 0;
+  text-align: center;
+  visibility: hidden;
+  width: 40px;
+  border-radius:50%;
+}
+.team-icon > a:hover{background:#fff;color:#666}
+.team-wrapper:hover .team-icon > a{opacity:1;visibility:visible;margin:0 5px}
+.team-info h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.team-info span {
+  color: #666;
+  text-transform: uppercase;
+}
+.team-member > img {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+}
+
+/*----- pricing table  ------*/
+.pricing-top {
+  border-bottom: 1px solid #ddd;
+  display: block;
+  overflow: hidden;
+}
+.single-pricing {
+  border: 1px solid #ddd;
+  padding: 50px;
+  text-align: center;
+}
+.pricing-top h3 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  position: relative;
+  text-transform: uppercase;
+}
+.pricing-top h3::before {
+  background: #666 none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  width: 60px;
+}
+.pricing-top p {
+  font-family: dosis;
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+.pricing-top p span {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.pricing-tex li {
+  color: #333333;
+  font-size: 14px;
+  padding-bottom: 22px;
+  text-transform: capitalize;
+}
+.pricing-tex li:last-child {
+  padding-bottom: 0px;
+}
+.pricing-tex li i{
+  padding-right: 10px;
+}
+
+.price-btn a {
+  background-color: transparent;
+  border: 1px solid #c1c1c1;
+  color: #464646;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+}
+.price-btn a:hover{
+  background-color: #464646;
+  border: 1px solid #464646;
+  color: #fff;
+}
+.pricing-tex > ul {
+  padding: 40px 0;
+}
+
+.price-btn .button i {
+  font-size: 14px;
+  padding-left: 12px;
+}
+
+
+/*----- contact ------*/
+
+
+#hastech2 {
+  height: 402px;
+  width: 100%;
+}
+h3.main-contact {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 32px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.main-input input {
+  background-color: transparent;
+  border: 1px solid #ddd;
+  color: #666;
+  font-family: "Lato",sans-serif;
+  font-size: 14px;
+  height: 45px;
+  padding-left: 20px;
+}
+
+
+.text-leave2 textarea {
+  background: transparent none repeat scroll 0 0;
+  border: 1px solid #ddd;
+  color: #666;
+  font-family: "Lato",sans-serif;
+  height: 150px;
+  margin-bottom: 40px;
+  padding: 14px 20px;
+}
+
+.leave-form input:focus, .main-input input:focus, .text-leave textarea:focus, .text-leave2 textarea:focus {
+  background: transparent none repeat scroll 0 0;
+  border: 1px solid #f6f6f6;
+}
+
+
+
+
+
+/*............. 18. Scrollup   ................*/
+
+#toTop {
+    text-align: center;
+    bottom: 35px;
+    cursor: pointer;
+    display: none;
+    position: fixed;
+    right: 12px;
+    z-index: 9999;
+}
+#toTop i {
+    background-color: #464646;
+    height: 40px;
+    width: 40px;
+    color: #fff;
+    line-height: 40px;
+}
+#toTop i:hover {
+    background-color: #666;
+    color: #fff;
+}
+
+
+
+
+

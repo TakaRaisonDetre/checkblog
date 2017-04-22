@@ -1,0 +1,179 @@
+/* -----------------------------------
+Template:  Theme Name
+
+NOTE: This is Slider style file. All Slider related style included in this file.
+
+--------------------------------------*/
+
+.slider {
+  position: relative;
+}
+.slider-bg {
+  background: rgba(0, 0, 0, 0) url("../../img/bg/slider-bg.jpg") repeat scroll right center / cover ;
+}
+.slider-bg-2 {
+  background: rgba(0, 0, 0, 0) url("../../img/bg/slider-bg-2.jpg") repeat fixed center top / cover ;
+}
+.slider-bg-3 {
+  background: rgba(0, 0, 0, 0) url("../../img/bg/slider-bg-3.jpg") repeat fixed center center / cover ;
+}
+
+.my-info-text {
+	
+}
+.info-inner {
+
+}
+.info-inner > span {
+  font-size: 18px;
+  font-weight: 500;
+}
+.slider-info-text{}
+.slider-info-text h1 {
+  color: #444;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.slider-text {
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.slider-text h2 {
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+.slider-text h2 span {
+
+}
+.slider-text h3 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.follow-me{}
+.follow-me span{}
+.follow-me a {
+  font-size: 14px;
+  margin-left: 15px;
+}
+.mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
+  cursor: pointer;
+}
+.slider-style-2 h1 {
+  color: #222;
+}
+.slider-style-2 .my-info-text {
+  background: rgba(255, 255, 255, 0.9) url("../../img/sep.png") no-repeat scroll left top;
+}
+.slider-style-4 {
+  position: static;
+  transform: inherit;
+}
+.my-info-text.slider-style-5 {
+
+}
+.slider-style-5 h1{color: #222}
+h2.headline-text {
+  color: #222;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.slider-style-4 .cd-headline.clip b {
+  font-weight: 400;
+}
+h3.heading-sub-title {
+  color: #333;
+  font-size: 30px;
+  text-transform: capitalize;
+}
+.cd-headline.clip .cd-words-wrapper::after {
+  background-color: #666;
+}
+
+
+/* -----------------------------------
+slider 7
+
+--------------------------------------*/
+
+.slider-title {
+  color: #fff;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+.slider-title > span {
+  display: block;
+  font-family: dosis;
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+.slider-title h2 {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.single-slider {
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.owl-theme .owl-controls .owl-nav div {
+  background: #fff none repeat scroll 0 0;
+  font-size: 25px;
+  height: 40px;
+  left: 10px;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease 0s;
+  visibility: hidden;
+  width: 40px;
+}
+.owl-theme .owl-controls .owl-nav div.owl-next {
+  left: auto;
+  right: 10px;
+}
+.owl-theme:hover .owl-controls .owl-nav div {
+  opacity: 1;
+  visibility:visible
+}
+.owl-theme .owl-controls .owl-nav div:hover {
+  background:#464646;
+  color:#fff;
+}
+
+
+.border-bottom {
+  border-bottom: 1px solid #f6f6f6;
+  border-top: 1px solid #f6f6f6;
+}
+
+.slider-text-style-3{}
+.slider-text-style-3 h1{}
+.slider-text-style-3 span{}
+.slider-text-style-3 .info-inner {
+  background: rgba(255, 255, 255, 0.8) none repeat scroll 0 0;
+  box-sizing: border-box;
+  display: inline-block;
+  outline: 1px solid #fff;
+  outline-offset: 8px;
+  padding: 65px;
+}

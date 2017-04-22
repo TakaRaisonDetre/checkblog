@@ -1,0 +1,478 @@
+<br><br>
+<!--blog-area start -->
+	
+        <div class="container">
+				<div class="section-title text-center mb-70">
+					<form>
+          <header>
+          <button (click)="logout()" class="btn btn-info">Logout</button>
+          </header>
+          </form>
+			
+      <hr>          
+        
+        <div class="row">
+          <h3 style="font-family: '游明朝', YuMincho, 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'HG明朝E', 'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;">
+            ブログ筆者の管理用</h3>
+
+          <h2>入力画面</h2>
+				　	</div>
+				</div>
+        </div>
+
+
+
+
+<div class="row">
+
+  <div class="col-md-12">
+  
+  <div class="col-md-6">
+    <div class="main-input">
+    <button (click)="changeState('addwithImage')" style ="margin-left: 50px;" class="btn btn-info btn-sm"> 通常ブログ追加 </button>
+    <button (click)="changeState('addwithVideo')" style ="margin-left: 50px;" class="btn btn-info btn-sm"> ビデオブログ追加 </button>
+
+  </div>
+  </div>
+  <div class="col-md-6">
+  
+    <div class="main-input mrg-eml mrg-contact">
+   <select (change)="filterCategory(filteredCategory.value)" #filteredCategory>
+    <option value ="0"> ‐選択‐</option>
+    <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+   </select>
+    </div>
+  </div>
+  </div>
+ </div>
+
+ <br>
+
+
+<!--new add with image form-->
+<div  class = "container" >
+
+ <div class="row" *ngIf="appState=='addwithImage'">
+   <div class="col-md-12">
+
+
+<hr>
+   <h3>ブログ追加</h3>
+　　　<form (submit) ="addBlogwithImage()">
+ 
+ <div class ="row">
+  <div class="col-md-6">
+    <label> タイトル
+    <input type="text" placeholder="タイトル"  [(ngModel)]="title" name="title" required>
+    </label>
+  </div>
+ <div class="col-md-6">
+    <label>　作者
+    <input type="text" placeholder="作者"  [(ngModel)]="writtenby" name="writtenby" required>
+    </label>
+  </div>
+ </div>
+
+<div class="row">
+<div class="col-md-6">
+    <label> カテゴリー
+    　<select [(ngModel)]="category" name="category" required>
+       <option value ="0"> ‐選択‐</option>
+       <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+   </select>
+    </label>
+  </div>
+ <div class="col-md-6">
+    <label>公開ステータス
+    　<select [(ngModel)]="publishedstatus" name="publishedstatus" required>
+       <option value ="0"> ‐選択‐</option>
+       <option *ngFor="let sts of statuses" value="{{sts.name}}">{{sts.name}}</option>
+   </select>
+    </label>
+  </div>
+  </div>
+
+
+<div class="row">
+<!--<div class="col-md-6">
+    <label> YOUTUBE（埋め込み）URL
+      <input type="text" placeholder="s23qwzu4Mb8?ecver=1"  [(ngModel)]="videourl" name="videourl">
+    </label>
+  </div>-->
+ <div class="col-md-6">
+    <label>　イメージURL
+    <input type="file" id="imageurl" placeholder="ファイル"  [(ngModel)]="imgurl" name="imgurl" required>
+    </label>
+  </div>
+ </div>
+
+
+
+ <div class="row">
+ <div class="col-md-12">
+    <label>　ブログ記事概要</label>
+    <textarea type="text" placeholder="ブログ記事概要" [(ngModel)]="shortbody" name="shortbody" required></textarea>
+    
+  </div>
+  </div>
+
+
+<div class="row">
+<div class="col-md-12">
+    <label> 本文段落１</label>
+    <textarea type="text"  [(ngModel)]="longbodyone" name="longbodyone"required></textarea>
+  </div>
+  </div>
+
+<div class="row">
+<div class="col-md-12">
+    <label> 本文段落２</label>
+   <textarea type="text" [(ngModel)]="longbodytwo" name="longbodytwo"></textarea>
+  </div>
+  </div>
+
+<div class="row">
+<div class="col-md-12">
+    <label> 本文段落３</label>
+  <textarea type="text" [(ngModel)]="longbodythree" name="longbodythree"></textarea>
+  
+  </div>
+  </div>
+
+<div class="row">
+<div class="col-md-12">
+   <input type="submit" class="btn btn-info" value="Submit">
+  </div>
+  </div>
+
+
+
+　　　</form>
+   </div>
+</div>
+ 
+ </div>
+ <!--add form-->
+
+
+
+
+
+<!--add form　with Video -->
+<div  class = "container">
+
+ <div class="row" *ngIf="appState=='addwithVideo'">
+   <div class="col-md-12">
+
+
+<hr>
+   <h3>ブログ追加</h3>
+　　　<form (submit) ="addBlog(
+      title.value,
+      writtenby.value,
+      shortbody.value, 
+      longbodyone.value, 
+      longbodytwo.value,
+      longbodythree.value,
+      publishedstatus.value,
+      category.value,
+      videourl.value)">
+ 
+ <div class ="row">
+  <div class="col-md-6">
+    <label> タイトル
+    <input type="text" placeholder="タイトル" #title required>
+    </label>
+  </div>
+ <div class="col-md-6">
+    <label>　作者
+    <input type="text" placeholder="作者" #writtenby required>
+    </label>
+  </div>
+ </div>
+
+<div class="row">
+<div class="col-md-6">
+    <label> カテゴリー
+    　<select #category required>
+       <option value ="0"> ‐選択‐</option>
+       <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+   </select>
+    </label>
+  </div>
+ <div class="col-md-6">
+    <label>公開ステータス
+    　<select #publishedstatus required>
+       <option value ="0"> ‐選択‐</option>
+       <option *ngFor="let sts of statuses" value="{{sts.name}}">{{sts.name}}</option>
+   </select>
+    </label>
+  </div>
+  </div>
+
+
+<div class="row">
+<div class="col-md-6">
+    <label> YOUTUBE（埋め込み）URL
+      <input type="text" placeholder="s23qwzu4Mb8?ecver=1" #videourl required>
+    </label>
+  </div>
+
+ <!--<div class="col-md-6">
+    <label>　イメージURL
+    <input type="text" placeholder="ファイル" #imgurl>
+    </label>
+  </div>-->
+ </div>
+
+
+
+ <div class="row">
+ <div class="col-md-12">
+    <label>　ブログ記事概要</label>
+    <textarea type="text" placeholder="ブログ記事概要" #shortbody required></textarea>
+    
+  </div>
+  </div>
+
+
+<div class="row">
+<div class="col-md-12">
+    <label> 本文段落１</label>
+    <textarea type="text" #longbodyone></textarea>
+  </div>
+  </div>
+
+<div class="row">
+<div class="col-md-12">
+    <label> 本文段落２</label>
+   <textarea type="text" #longbodytwo></textarea>
+  </div>
+  </div>
+
+<div class="row">
+<div class="col-md-12">
+    <label> 本文段落３</label>
+  <textarea type="text" #longbodythree></textarea>
+  
+  </div>
+  </div>
+
+<div class="row">
+<div class="col-md-12">
+   <input type="submit" class="btn btn-default" value="Submit">
+  </div>
+  </div>
+　</form>
+   </div>
+</div>
+ 
+ </div>
+ <!--add form-->
+
+<!--edit form-->
+<div  class = "container">
+
+ <div class="row" *ngIf="appState=='edit'">
+   <div class="col-md-12">
+
+
+<hr>
+   <h3>ブログ追加</h3>
+　　　<form (submit) ="upDateBlog()">
+ 
+ <div class ="row">
+  <div class="col-md-6">
+    <label> タイトル
+    <input type="text" [(ngModel)]="activeTitle" name="activeTitle" placeholder="タイトル" #title>
+    </label>
+  </div>
+ <div class="col-md-6">
+    <label>　作者
+    <input type="text" placeholder="作者" [(ngModel)]="activeWrittenby" name="activeWrittenby" #writtenby>
+    </label>
+  </div>
+ </div>
+
+<div class="row">
+<div class="col-md-6">
+    <label> カテゴリー
+    　<select [(ngModel)]="activeCategory" name="activeCategory" #category>
+       <option value ="0"> ‐選択‐</option>
+       <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+   </select>
+    </label>
+  </div>
+ <div class="col-md-6">
+    <label>公開ステータス
+    　<select [(ngModel)]="activePublishedstatus" name="activePublishedstatus" #publishedstatus>
+       <option value ="0"> ‐選択‐</option>
+       <option *ngFor="let sts of statuses" value="{{sts.name}}">{{sts.name}}</option>
+   </select>
+    </label>
+  </div>
+  </div>
+
+
+<div class="row">
+<div class="col-md-6">
+    <label> YOUTUBE（埋め込み）URL
+      <input [(ngModel)]="activeVideourl" name="activeVideourl" type="text" placeholder="s23qwzu4Mb8?ecver=1" #videourl>
+    </label>
+  </div>
+ <!--<div class="col-md-6">
+    <label>　イメージURL
+    <input  [(ngModel)]="activeImgurl" name="activeImgurl" type="text" placeholder="ファイル" #imgurl>
+    </label>
+  </div>-->
+ </div>
+
+ <div class="row">
+ <div class="col-md-12">
+    <label>　ブログ記事概要</label>
+    <textarea type="text" [(ngModel)]="activeShortbody" name="activeShortbody"  placeholder="ブログ記事概要" #shortbody></textarea>
+    
+  </div>
+  </div>
+
+
+<div class="row">
+<div class="col-md-12">
+    <label> 本文段落１</label>
+    <textarea type="text"[(ngModel)]="activeLongbodyone" name="activeLongbodyone" #longbodyone></textarea>
+  </div>
+  </div>
+
+<div class="row">
+<div class="col-md-12">
+    <label> 本文段落２</label>
+   <textarea type="text" [(ngModel)]="activeLongbodytwo" name="activeLongbodytwo" #longbodytwo></textarea>
+  </div>
+  </div>
+
+<div class="row">
+<div class="col-md-12">
+    <label> 本文段落３</label>
+  <textarea type="text" [(ngModel)]="activeLongbodythree" name="activeLongbodythree" #longbodythree></textarea>
+  
+  </div>
+  </div>
+
+<div class="row">
+<div class="col-md-12">
+   <input type="submit" class="btn btn-info" value="Submit">
+  </div>
+  </div>
+
+
+
+　　　</form>
+   </div>
+</div>
+ 
+ </div>
+<!--edit form-->
+
+
+
+<section id="contact" class="blog-area gray-bg ptb-90" *ngIf = "appState=='extend'">
+<div *ngFor ="let item of blogs">
+  <div *ngIf ="item.$key==activeKey">
+    <div class="container">
+      	<div class="section-title text-center mb-70">
+　　　　　			<div class="row">
+     　　　　　<button (click)="changeState('default')" class="btn btn-danger btn-sm">閉じる</button>
+    　　　　　</div>
+  　　　　　　 <hr>
+      		<h3>{{item.title}}</h3>
+					<p>{{item.shortbody}}</p>
+				</div>				
+        
+       <div class="row">
+                    <div class="col-md-12">
+                        <div class="conract-area-bottom">
+                            <form id="contact-form" method="post">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="main-input">
+                                              <p>{{item.category}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="main-input mrg-eml mrg-contact">
+                                            <p>{{item.writtenby}}</p>  
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6">
+                                        <div class="main-input">
+                                              <p>{{item.publishedstatus}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="main-input mrg-eml mrg-contact">
+                                            <p>{{item.createdat}}</p>  
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                       <div class="main-input mt-20 mb-20">
+                                            <p>{{item.longbodyone}}</p>
+                                            <p>{{item.longbodytwo}}</p>
+                                            <p>{{item.longbodythree}}</p>
+                                            
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </form>
+                            <p class="form-messege"></p>
+                        </div>
+                    </div>
+                    </div>
+ 
+   
+
+</div>
+</div>
+</div>
+    </section>
+
+  <div class="container">
+        　　　<div class ="row">
+                 <div class="">
+                   <div *ngIf = "blogs">
+                    
+                     <table class="table-condensed table-hover" style="margin-left:50px;">
+                        <tr>
+                         <th>タイトル</th>
+                         <th>カテゴリー</th>
+                         <th>公開ステータス</th>
+                         <th>ブログショート記述</th>
+                          <th></th>
+                       </tr>
+                       <tbody>
+                           <tr *ngFor="let item of blogs">
+                           <td>{{item.title}}</td>
+                           <td>{{item.category}}</td>
+                           <td>{{item.publishedstatus}}</td>
+                      　   <td>{{item.shortbody}}</td>
+                           <td> 
+                              <button (click)="changeState('extend', item.$key)" class="btn btn-primary btn-sm">詳細</button>
+                              <button (click)="showEdit(item)" class="btn btn-success btn-sm">訂正</button>
+                             <button (click)="deleteblog(item.$key)" class="btn btn-danger btn-sm">削除</button>
+                            </td>
+                           </tr>
+                       </tbody>
+                     </table>
+
+                </div>
+  　　　</div>
+
+				</div>					
+  </div>
+        
+            
+       
+		<!-- blog-area end -->		
+
+
+     
