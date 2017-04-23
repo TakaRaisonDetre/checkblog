@@ -77,12 +77,14 @@
                         <th>Title クリックで詳細</th>
                         <th>Author</th> 
                         <th>Category</th>
+                         <th>image</th>
                     </tr>
                     <tr *ngFor="let item of listings | paginate: {itemsPerPage: 2, currentPage:page, id: '1'}; let i = index">
                         <td>{{i + 1}}</td>
                         <td><a [routerLink]="['/individual-blog/' + item.$key]"> {{item.title}} </a></td>
                         <td>{{item.writtenby}}</td>
                         <td>{{item.category}}</td>
+                        <td><img [src]="item.imageUrl" alt="" style="width:50px;"></td>
                     </tr>
                 </table>
 

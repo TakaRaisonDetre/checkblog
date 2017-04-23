@@ -31,17 +31,17 @@ i: any;
   
     console.log(lists);
    
-  
-   
-   // TODO
   //  for loop statement for displaying blog image and video 
-   // for (let entry of lists ){
-  //   let storageRef = firebase.storage().ref();
-  //    let spaceRef = storageRef.child("Bloggingimages" + entry.path);
-  //     storageRef.child(entry.path).getDownloadURL().then((url)=>{
-  //      this.imageUrl = url;
-  //  }) ; 
- //  }     
+    for (let entry of lists ){
+    let storageRef = firebase.storage().ref();
+     let spaceRef = storageRef.child("Bloggingimages" + entry.path);
+if(entry.path){
+      storageRef.child(entry.path).getDownloadURL().then((url)=>{
+      entry.imageUrl = url;
+   }) ; 
+}
+
+  }     
 }) ; 
 }
 }
