@@ -39,6 +39,10 @@ import { MeterComponent } from './meter/meter.component';
 
 import {Ng2PaginationModule} from 'ng2-pagination'; //importing ng2-pagination
 
+import {AngularCarousel} from './angularCrousel/AngularCarousel.component'
+import {Slide} from './angularCrousel/slide.component';
+import {Carousel} from './angularCrousel/carousel.component'
+import {GalleryComponent} from './angularCrousel/gallery.component';
 export const firebaseConfig ={
 apiKey: "AIzaSyD-ckdmA_bo9ntpUDyE1NTiX5IUhvdBAck",
     authDomain: "wakatakasailing-e7410.firebaseapp.com",
@@ -70,7 +74,7 @@ apiKey: "AIzaSyD-ckdmA_bo9ntpUDyE1NTiX5IUhvdBAck",
     PrivacyComponent,
     TeamComponent,
     OpenblogComponent,
-    MeterComponent
+    MeterComponent,AngularCarousel,Carousel,Slide,GalleryComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,7 @@ apiKey: "AIzaSyD-ckdmA_bo9ntpUDyE1NTiX5IUhvdBAck",
     Ng2PaginationModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig)
-  ],
+],
   providers: [FirebaseService, UserfirebaseService, AuthGuard],
   bootstrap: [AppComponent]
 })

@@ -29,8 +29,8 @@
   
   <div class="col-md-6">
     <div class="main-input">
-    <button (click)="changeState('addwithImage')" style ="margin-left: 50px;" class="btn btn-info btn-sm"> 通常ブログ追加 </button>
-    <button (click)="changeState('addwithVideo')" style ="margin-left: 50px;" class="btn btn-info btn-sm"> ビデオブログ追加 </button>
+    <button (click)="showAdd=!showAdd" style ="margin-left: 50px;" class="btn btn-info btn-sm">Add </button>
+    <!-- <button (click)="changeState('addwithVideo')" style ="margin-left: 50px;" class="btn btn-info btn-sm"> ビデオブログ追加 </button> -->
 
   </div>
   </div>
@@ -38,7 +38,7 @@
   
     <div class="main-input mrg-eml mrg-contact">
    <select (change)="filterCategory(filteredCategory.value)" #filteredCategory>
-    <option value ="0"> ‐選択‐</option>
+    <option value =""> ‐選択‐</option>
     <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
    </select>
     </div>
@@ -52,7 +52,7 @@
 <!--new add with image form-->
 <div  class = "container" >
 
- <div class="row" *ngIf="appState=='addwithImage'">
+ <div class="row" *ngIf="showAdd">
    <div class="col-md-12">
 
 
@@ -104,10 +104,22 @@
     <input type="file" id="imageurl" placeholder="ファイル"  [(ngModel)]="imgurl" name="imgurl" required>
     </label>
   </div>
+  <div class="col-md-6">
+    <label>　video URL
+    <input type="text" id="videosUrl" placeholder="video url"  [(ngModel)]="videourl" name="imgurl">
+    </label>
+  </div>
  </div>
 
 
+<div class="row">
+ <div class="col-md-12">
+    <label>multiple images</label>
+    <input type="file" multiple (change)="handler($event)">
 
+    
+  </div>
+  </div>
  <div class="row">
  <div class="col-md-12">
     <label>　ブログ記事概要</label>
@@ -153,121 +165,8 @@
  
  </div>
  <!--add form-->
-
-
-
-
-
 <!--add form　with Video -->
-<div  class = "container">
 
- <div class="row" *ngIf="appState=='addwithVideo'">
-   <div class="col-md-12">
-
-
-<hr>
-   <h3>ブログ追加</h3>
-　　　<form (submit) ="addBlog(
-      title.value,
-      writtenby.value,
-      shortbody.value, 
-      longbodyone.value, 
-      longbodytwo.value,
-      longbodythree.value,
-      publishedstatus.value,
-      category.value,
-      videourl.value)">
- 
- <div class ="row">
-  <div class="col-md-6">
-    <label> タイトル
-    <input type="text" placeholder="タイトル" #title required>
-    </label>
-  </div>
- <div class="col-md-6">
-    <label>　作者
-    <input type="text" placeholder="作者" #writtenby required>
-    </label>
-  </div>
- </div>
-
-<div class="row">
-<div class="col-md-6">
-    <label> カテゴリー
-    　<select #category required>
-       <option value ="0"> ‐選択‐</option>
-       <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
-   </select>
-    </label>
-  </div>
- <div class="col-md-6">
-    <label>公開ステータス
-    　<select #publishedstatus required>
-       <option value ="0"> ‐選択‐</option>
-       <option *ngFor="let sts of statuses" value="{{sts.name}}">{{sts.name}}</option>
-   </select>
-    </label>
-  </div>
-  </div>
-
-
-<div class="row">
-<div class="col-md-6">
-    <label> YOUTUBE（埋め込み）URL
-      <input type="text" placeholder="s23qwzu4Mb8?ecver=1" #videourl required>
-    </label>
-  </div>
-
- <!--<div class="col-md-6">
-    <label>　イメージURL
-    <input type="text" placeholder="ファイル" #imgurl>
-    </label>
-  </div>-->
- </div>
-
-
-
- <div class="row">
- <div class="col-md-12">
-    <label>　ブログ記事概要</label>
-    <textarea type="text" placeholder="ブログ記事概要" #shortbody required></textarea>
-    
-  </div>
-  </div>
-
-
-<div class="row">
-<div class="col-md-12">
-    <label> 本文段落１</label>
-    <textarea type="text" #longbodyone></textarea>
-  </div>
-  </div>
-
-<div class="row">
-<div class="col-md-12">
-    <label> 本文段落２</label>
-   <textarea type="text" #longbodytwo></textarea>
-  </div>
-  </div>
-
-<div class="row">
-<div class="col-md-12">
-    <label> 本文段落３</label>
-  <textarea type="text" #longbodythree></textarea>
-  
-  </div>
-  </div>
-
-<div class="row">
-<div class="col-md-12">
-   <input type="submit" class="btn btn-default" value="Submit">
-  </div>
-  </div>
-　</form>
-   </div>
-</div>
- 
- </div>
  <!--add form-->
 
 <!--edit form-->
@@ -279,7 +178,7 @@
 
 <hr>
    <h3>ブログ追加</h3>
-　　　<form (submit) ="upDateBlog()">
+　　　<form (submit) ="upDateBlog($event)">
  
  <div class ="row">
   <div class="col-md-6">

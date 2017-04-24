@@ -8,7 +8,7 @@ import {UserfirebaseService} from '../../services/userfirebase.service';
 import {Category } from '../../category';
 import {Status} from '../../status'; 
 import {Blog} from '../../blog';
-
+import {Subject} from 'rxjs/Subject';
 @Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
@@ -26,7 +26,8 @@ export class AuthorsComponent implements OnInit {
 
    appState : string;
    activeKey: string;
-
+   showAdd:boolean=false;
+   files=[];
 // used for image saving
  title: any;
  writtenby: any;
@@ -52,6 +53,9 @@ export class AuthorsComponent implements OnInit {
  activeVideourl:string;
  activeImgurl:string;
  activePath:string;
+ //public uploader:FileUploader = new FileUploader({url:'http://localhost:3001/upload'});
+ subject = new Subject(); 
+
 
   constructor(
   public af: AngularFire, 
@@ -59,6 +63,18 @@ export class AuthorsComponent implements OnInit {
  private _firebaseService: FirebaseService,
  private firebaseService:UserfirebaseService,
   ) {
+const queryObservable = af.database.list('/blogs', {
+  query: {
+    orderByChild: 'category',
+    equalTo: this.subject 
+  }
+});
+
+// subscribe to changes
+queryObservable.subscribe(queriedItems => {
+  
+  this.blogs=queriedItems;
+});
 
     this.af.auth.subscribe(auth => {
       if(auth) {
@@ -86,9 +102,15 @@ this.statuses = statuses
 }
 
 filterCategory(category){
-this._firebaseService.getBlogsByCategory(category).subscribe(blogs => {
-this.blogs = blogs
-});
+  if(category){
+    this.subject.next(category)
+  }else{
+    this._firebaseService.getBlogsByCategory().subscribe(res=>{
+      this.blogs=res;
+    })
+  }
+  
+
 }
 
 
@@ -116,12 +138,13 @@ let Blog = {
  longbodyone: this.longbodyone, 
  longbodytwo: this.longbodytwo,
  longbodythree: this.longbodythree,
+ files:this.files
 //  createdat : this.createdat
 //  videourl:this.videourl,
  }
-this._firebaseService.addBlogTwo(Blog);
+this._firebaseService.addBlogTwo(Blog)
 this.changeState('default', this);
- 
+this.showAdd=false;
 
 
 }
@@ -178,7 +201,8 @@ this.changeState('edit', item.$key);
 
 
 }
-upDateBlog(){
+upDateBlog($event){
+  $event.preventDefault();
 var updBlog ={
  title:this.activeTitle,
  writtenby :this.activeWrittenby,
@@ -189,17 +213,25 @@ var updBlog ={
  publishedstatus:this.activePublishedstatus,
  category:this.activeCategory,
  videourl:this.activeVideourl,
- path:this.path,
+ //path:this.path,
 //  imgurl:this.activeImgurl
 }
-this._firebaseService.updateblog(this.activeKey, updBlog);
+this._firebaseService.updateblog(this.activeKey, updBlog).then(res=>{
+  console.log(res)
+},reason=>{
+  console.log("reason=",reason)
+});
 this.changeState('default',this);
 }
+
 deleteblog(key){
 this._firebaseService.deleteblog(key);
 this.changeState('default',this);
 
 
+}
+handler(event){
+  this.files=[].slice.apply(event.target.files);
 }
 
 

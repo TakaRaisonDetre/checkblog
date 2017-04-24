@@ -25,17 +25,20 @@ this.folder2='Bloggingimages/blog'
 
 getBlogsByCategory(category:string =null) {
   if (category!=null) {
-this.blogs = this._af.database.list('/blogs', {
+return  this._af.database.list('/blogs', {
 query :{ 
   orderByChild : 'category', 
   equaTo: category}
-}) as
+}).filter(res=>{
+  console.log(res);
+  return res;
+})as
 FirebaseListObservable<Blog[]>
 } else {
-this.blogs = this._af.database.list('/blogs') as
+return this._af.database.list('/blogs') as
 FirebaseListObservable<Blog[]>
 }
-return this.blogs;
+//return this.blogs;
 }
 
 getBlogs(){
@@ -76,9 +79,17 @@ for(let selectedFile of [(<HTMLInputElement>document.getElementById('imageurl'))
 let path =`/${this.folder2}/${selectedFile.name}`;
 let iRef = storageRef.child(path);
 iRef.put(selectedFile).then((snapshot)=>{
-  Blog.imgurl=selectedFile.name;
-  Blog.path =path;
-return this.blogs.push(Blog);  
+  Promise.all(Blog.files.map(function(file) {
+    return iRef.child(file.name).put(file);
+  })).then(res=>{
+    Blog.files=[];
+   res.forEach(item=>{
+     Blog.files.push(item["downloadURL"]);
+   })
+   Blog.imgurl=selectedFile.name;
+    Blog.path =path;
+  return this.blogs.push(Blog);  
+  })
 }); 
 }
 }
@@ -93,7 +104,11 @@ addblog(newBlog){
 return this.blogs.push(newBlog);
 }
 updateblog(key, updblog){
-return this.blogs.update(key, updblog);
+return this._af.database.list('/blogs').update(key, updblog).then(res=>{
+  console.log(res);
+},reason=>{
+  console.log(reason)
+})
 }
 deleteblog(key){
 return this.blogs.remove(key);
