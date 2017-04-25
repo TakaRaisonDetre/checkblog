@@ -138,9 +138,9 @@ let Blog = {
  longbodyone: this.longbodyone, 
  longbodytwo: this.longbodytwo,
  longbodythree: this.longbodythree,
- files:this.files
+ files:this.files,
 //  createdat : this.createdat
-//  videourl:this.videourl,
+  videourl:this.videourl,
  }
 this._firebaseService.addBlogTwo(Blog)
 this.changeState('default', this);
