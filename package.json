@@ -23,9 +23,7 @@
     "angularfire2": "^2.0.0-beta.8",
     "core-js": "^2.4.1",
     "firebase": "^3.7.0",
-    "ng2-file-upload": "^1.2.1",
     "ng2-pagination": "^2.0.1",
-    "primeng": "^4.0.0-rc.3",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.7.2"
