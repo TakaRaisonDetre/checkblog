@@ -37,24 +37,27 @@ flag=false;
 
   if (list.path){
     let storageRef = firebase.storage().ref();
-    let spaceRef=storageRef.child('/Bloggingimages/blog/' + list.path);
+    //let spaceRef=storageRef.child('/Bloggingimages/blog/' + list.path);
     storageRef.child(list.path).getDownloadURL().then((url) => {
        vm.imageUrl = url;
   });
   }
+  vm.listing.files=vm.listing.files.map(url=>{
+      return {"url":url}
+    });
 
 
-  Promise.all(this.listing.files.map(item=>{
-     let storageRef = firebase.storage().ref();
-    let spaceRef=storageRef.child('/Bloggingimages/blog/' + list.path);
-    return storageRef.child(list.path).getDownloadURL()
+ //  Promise.all(this.listing.files.map(item=>{
+ //     let storageRef = firebase.storage().ref();
+ //   // let spaceRef=storageRef.child('/Bloggingimages/blog/' + item);
+ //    return storageRef.child(item).getDownloadURL()
   
-  })).then(res=>{
+ //  })).then(res=>{
    
-   vm.listing.files=res.map(url=>{
- return {"url":url}
-   });
- });
+ //   vm.listing.files=res.map(url=>{
+ // return {"url":url}
+ //   });
+ // });
   
 
 

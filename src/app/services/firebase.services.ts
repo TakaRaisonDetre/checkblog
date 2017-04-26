@@ -79,8 +79,10 @@ for(let selectedFile of [(<HTMLInputElement>document.getElementById('imageurl'))
 let path =`/${this.folder2}/${selectedFile.name}`;
 let iRef = storageRef.child(path);
 iRef.put(selectedFile).then((snapshot)=>{
+let vm=this;
   Promise.all(Blog.files.map(function(file) {
-    return iRef.child(file.name).put(file);
+    let iRef2 = storageRef.child(`/${vm.folder2}/${file.name}`);
+    return iRef2.child(file.name).put(file);
   })).then(res=>{
     Blog.files=[];
    res.forEach(item=>{

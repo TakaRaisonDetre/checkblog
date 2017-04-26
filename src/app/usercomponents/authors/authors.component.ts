@@ -140,7 +140,7 @@ let Blog = {
  longbodythree: this.longbodythree,
  files:this.files,
 //  createdat : this.createdat
-  videourl:this.videourl,
+  videourl:this.videourl||"",
  }
 this._firebaseService.addBlogTwo(Blog)
 this.changeState('default', this);
@@ -212,7 +212,7 @@ var updBlog ={
  longbodythree:this.activeLongbodythree,
  publishedstatus:this.activePublishedstatus,
  category:this.activeCategory,
- videourl:this.activeVideourl,
+ videourl:this.activeVideourl||"",
  //path:this.path,
 //  imgurl:this.activeImgurl
 }
