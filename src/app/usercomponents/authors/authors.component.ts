@@ -73,7 +73,7 @@ const queryObservable = af.database.list('/blogs', {
 // subscribe to changes
 queryObservable.subscribe(queriedItems => {
   
-  this.blogs=queriedItems;
+  this.blogs=queriedItems.reverse();;
 });
 
     this.af.auth.subscribe(auth => {
@@ -91,7 +91,7 @@ logout() {
 
 ngOnInit() {
 this._firebaseService.getBlogs().subscribe(blogs => {
-this.blogs = blogs
+this.blogs = blogs.reverse();
 });
 this._firebaseService.getCategory().subscribe(categories => {
 this.categories = categories
