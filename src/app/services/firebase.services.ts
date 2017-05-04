@@ -79,8 +79,10 @@ for(let selectedFile of [(<HTMLInputElement>document.getElementById('imageurl'))
 let path =`/${this.folder2}/${selectedFile.name}`;
 let iRef = storageRef.child(path);
 iRef.put(selectedFile).then((snapshot)=>{
+  console.log(snapshot)
 let vm=this;
-  Promise.all(Blog.files.map(function(file) {
+this.blogs.push(Blog).then(response=>{
+Promise.all(Blog.files.map(function(file) {
     let iRef2 = storageRef.child(`/${vm.folder2}/${file.name}`);
     return iRef2.child(file.name).put(file);
   })).then(res=>{
@@ -90,8 +92,10 @@ let vm=this;
    })
    Blog.imgurl=selectedFile.name;
     Blog.path =path;
-  return this.blogs.push(Blog);  
+  return response.update(Blog);  
   })
+});
+
 }); 
 }
 }

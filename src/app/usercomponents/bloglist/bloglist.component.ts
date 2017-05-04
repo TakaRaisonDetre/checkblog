@@ -41,10 +41,14 @@ flag=false;
     storageRef.child(list.path).getDownloadURL().then((url) => {
        vm.imageUrl = url;
   });
-  }
+}
+if(vm.listing.files){
   vm.listing.files=vm.listing.files.map(url=>{
       return {"url":url}
     });
+}else{
+  vm.listing.files=[];
+}
 
 
  //  Promise.all(this.listing.files.map(item=>{
